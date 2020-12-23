@@ -2,11 +2,41 @@
 .mat-sidenav {
     width: 280px;
     padding:15px;
-    color: black;
+    border: gray;
+    // background-color: white;
     transition-timing-function: ease-in-out;
 }
+.mat-toolbar{
+    background-color: rgb(179, 174, 174);
+}
+a{
+    color: white;
+}
+.main-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    text-align: center;
+    //padding-left: 50px;
+    //border: solid gray;
+    //width: 200px;
+    
+}
+.loginform{
+    height: 340px;
+    width:300px;
+    box-shadow: 5px 10px;
+    border: solid gray;
+}
+h1{
+    color: darkblue;
+}
+.email{
+    margin-top: 25px;
+}
 .mat-drawer { 
-    background-color: #023075;
+    background-color: whitesmoke;
     color:#fff
 }
 .menu-button {

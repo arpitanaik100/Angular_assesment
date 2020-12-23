@@ -1,5 +1,6 @@
+
 <mat-sidenav-container fullscreen>
-    <mat-sidenav color="black" mode="side" #sidenav opened position="start">
+    <mat-sidenav  mode="side" #sidenav opened position="start">
       <mat-toolbar>Menu</mat-toolbar>
       <mat-nav-list>
         <a mat-list-item href="#">Link 1</a>
@@ -9,12 +10,19 @@
     </mat-sidenav>
     <mat-sidenav-content>
       <mat-toolbar color="primary">
-          
-          
-          <button mat-button class="menu-button" 
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="sidenav.toggle()"
+          *ngIf="true">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+  
+          <!-- <button mat-button class="menu-button" 
           (click)="sidenav.toggle()">
-              <mat-icon><img src="./icon.png" alt="icon"/>menu</mat-icon>
-          </button>
+              <mat-icon>menu</mat-icon>
+          </button> -->
         <!-- <button type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
@@ -32,10 +40,32 @@
         <span class="toolbar-spacer"></span>
         My Account
       </mat-toolbar>
-      <div class="main-content">
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+      <div [formGroup]="form" class="main-content">
+        <div class="loginform">
+          <h1>LOGIN</h1>
+          <mat-form-field class="email">
+          <mat-label>Email</mat-label>
+          <input formControlName="email" matInput placeholder="Email"></mat-form-field>
+          <!-- <mat-error *ngIf="emailFormControl.hasError('minLength') && !emailFormControl.hasError('required')">
+              Please enter a valid email address
+          </mat-error> -->
+          <mat-error *ngIf="form.dirty && form.get('email').value.length==0">Email is required</mat-error>
+          <!-- <mat-hint>eg.abcd@gmail.com</mat-hint> -->
+        <br>
+      
+      <mat-form-field class="pass">
+          <mat-label>Password</mat-label>
+          <input type="password" formControlName="password" matInput placeholder="Password">
+        </mat-form-field>
+        <mat-error *ngIf="form.dirty && form.get('password').value.length==0">Password is required</mat-error>
+        <!-- <mat-hint>Min 8 characters</mat-hint> -->
+        <br><br>
+
+        <button mat-button color="primary" mat-raised-button (click)="submit()" [disable]="!enableSubmitBtn()">Login</button>
+      </div>
       </div>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
+  
   
